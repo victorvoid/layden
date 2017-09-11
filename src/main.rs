@@ -2,7 +2,7 @@ extern crate gtk;
 
 use gtk::prelude::*;
 use gtk::{
-    AboutDialog, CheckMenuItem, IconSize, Image, Label, Menu, MenuBar, MenuItem, Window,
+    AboutDialog, CheckMenuItem, Label, Menu, MenuBar, MenuItem, Window,
     WindowPosition, WindowType
 };
 
@@ -29,25 +29,11 @@ fn main() {
     let menu_bar = MenuBar::new();
     let file = MenuItem::new_with_label("File");
     let about = MenuItem::new_with_label("About");
+    let new_file = MenuItem::new_with_label("New");
     let quit = MenuItem::new_with_label("Quit");
-    let file_item = MenuItem::new();
-    let file_box = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    let file_image = Image::new_from_file("resources/file.png");
-    let file_label = Label::new(Some("New"));
-    let folder_item = MenuItem::new();
-    let folder_box = gtk::Box::new(gtk::Orientation::Horizontal, 0);
-    let folder_image = Image::new_from_icon_name("folder-music-symbolic", IconSize::Menu.into());
-    let folder_label = Label::new(Some("Folder"));
     let check_item = CheckMenuItem::new_with_label("Click me!");
 
-    file_box.pack_start(&file_image, false, false, 0);
-    file_box.pack_start(&file_label, true, true, 0);
-    file_item.add(&file_box);
-    folder_box.pack_start(&folder_image, false, false, 0);
-    folder_box.pack_start(&folder_label, true, true, 0);
-    folder_item.add(&folder_box);
-    menu.append(&file_item);
-    menu.append(&folder_item);
+    menu.append(&new_file);
     menu.append(&check_item);
     menu.append(&about);
     menu.append(&quit);
